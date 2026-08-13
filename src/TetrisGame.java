@@ -32,7 +32,7 @@ public class TetrisGame {
     public void iniciar() {
         limpiarTablero();
         gameOver = false;
-        System.out.println("\n=== TETRIS ===");
+        System.out.println("\n=== TETRIS === 2026!!!");
         System.out.println("Controles: a=izquierda, d=derecha, s=abajo, w=rotar, q=salir");
 
         while (!gameOver) {
