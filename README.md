@@ -1,9 +1,10 @@
 # algoritmosyestructuras-2026
 
-Sistema de consola en Java con dos juegos seleccionables desde un menú:
+Sistema de consola en Java con un menú que incluye dos juegos y una opción educativa:
 
 1. **El mayor y menor**: adivinar un número secreto entre 1 y 100 en un máximo de 5 intentos.
 2. **Piedra, papel o tijera**: 5 rondas contra la máquina; gana quien acumule más victorias.
+3. **Notación Big O**: indica dónde encontrar la explicación de la notación Big O con ejemplos en código (ver [`docs/algoritmos.md`](docs/algoritmos.md)).
 
 ## Requisitos
 
@@ -36,4 +37,5 @@ java -jar lib/junit-platform-console-standalone-1.10.2.jar --class-path bin --sc
 
 - `src/juegos/`: código fuente del sistema y pruebas automatizadas (JUnit 5).
 - `lib/`: librerías de JUnit 5 (autocontenidas).
+- `docs/`: documentación del sistema, incluida la explicación de la notación Big O ([`docs/algoritmos.md`](docs/algoritmos.md)).
 - `.vscode/settings.json`: configuración de librerías para VS Code.

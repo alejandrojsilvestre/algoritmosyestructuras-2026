@@ -66,4 +66,22 @@ class MenuTest {
         assertTrue(juego2.jugado, "Debe ejecutar el segundo juego.");
         assertEquals(2, consola.contar("=== Menú principal ==="), "Debe volver a mostrar el menú.");
     }
+
+    @Test
+    @DisplayName("Muestra la opción Notación Big O y vuelve al menú al elegirla")
+    void iniciar_muestraOpcionBigOYVuelveAlMenu() {
+        JuegoEspia juego1 = new JuegoEspia("Juego uno");
+        JuegoEspia juego2 = new JuegoEspia("Juego dos");
+        ConsolaFalsa consola = new ConsolaFalsa("3", "4");
+
+        new Menu(consola, List.of(juego1, juego2, new ExplicacionBigO(consola))).iniciar();
+
+        assertTrue(consola.contiene("3. Notación Big O"), "Debe listar la opción Notación Big O.");
+        assertTrue(consola.contiene("4. Salir"), "Salir debe pasar a ser la opción 4.");
+        assertTrue(consola.contiene(ExplicacionBigO.MENSAJE),
+                "Debe mostrar el mensaje que orienta a la documentación.");
+        assertTrue(consola.contiene("¡Hasta luego!"), "Debe salir al elegir la opción 4.");
+        assertFalse(juego1.jugado, "No debe ejecutar el primer juego.");
+        assertFalse(juego2.jugado, "No debe ejecutar el segundo juego.");
+    }
 }

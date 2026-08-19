@@ -11,11 +11,18 @@ import java.util.Random;
  */
 public class JuegoPiedraPapelTijera implements Juego {
 
+    /** Cantidad de rondas que se juegan por partida. */
     public static final int TOTAL_RONDAS = 5;
 
     private final Consola consola;
     private final Random random;
 
+    /**
+     * Crea el juego con su consola de entrada/salida y su generador aleatorio.
+     *
+     * @param consola consola de entrada/salida
+     * @param random  generador aleatorio de la elección de la máquina
+     */
     public JuegoPiedraPapelTijera(Consola consola, Random random) {
         this.consola = Objects.requireNonNull(consola, "La consola no puede ser null.");
         this.random = Objects.requireNonNull(random, "El generador aleatorio no puede ser null.");
@@ -58,6 +65,12 @@ public class JuegoPiedraPapelTijera implements Juego {
         mostrarResultadoFinal(victoriasUsuario, victoriasMaquina);
     }
 
+    /**
+     * Muestra el resultado final comparando las victorias de cada jugador.
+     *
+     * @param victoriasUsuario victorias acumuladas por el usuario
+     * @param victoriasMaquina victorias acumuladas por la máquina
+     */
     private void mostrarResultadoFinal(int victoriasUsuario, int victoriasMaquina) {
         consola.escribirLinea("Resultado final: " + victoriasUsuario + " victorias tuyas contra "
                 + victoriasMaquina + " de la máquina.");
@@ -65,6 +78,7 @@ public class JuegoPiedraPapelTijera implements Juego {
         if (victoriasUsuario > victoriasMaquina) {
             consola.escribirLinea("¡Ganaste la partida!");
         } else if (victoriasMaquina > victoriasUsuario) {
+    /** Elige al azar una de las opciones de {@link Eleccion} para la máquina. */
             consola.escribirLinea("La máquina ganó la partida.");
         } else {
             consola.escribirLinea("La partida terminó en empate.");

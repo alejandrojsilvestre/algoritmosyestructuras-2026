@@ -15,6 +15,13 @@ public class Menu {
     private final Consola consola;
     private final List<Juego> juegos;
 
+    /**
+     * Crea el menú con una consola y una lista no vacía de juegos.
+     *
+     * @param consola consola de entrada/salida
+     * @param juegos  juegos disponibles (al menos uno)
+     * @throws IllegalArgumentException si la lista de juegos está vacía
+     */
     public Menu(Consola consola, List<Juego> juegos) {
         this.consola = Objects.requireNonNull(consola, "La consola no puede ser null.");
         this.juegos = List.copyOf(Objects.requireNonNull(juegos, "La lista de juegos no puede ser null."));

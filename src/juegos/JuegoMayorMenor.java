@@ -9,13 +9,22 @@ import java.util.Random;
  */
 public class JuegoMayorMenor implements Juego {
 
+    /** Límite inferior del número secreto. */
     public static final int RANGO_MINIMO = 1;
+    /** Límite superior del número secreto. */
     public static final int RANGO_MAXIMO = 100;
+    /** Cantidad máxima de intentos por partida. */
     public static final int INTENTOS_MAXIMOS = 5;
 
     private final Consola consola;
     private final Random random;
 
+    /**
+     * Crea el juego con su consola de entrada/salida y su generador aleatorio.
+     *
+     * @param consola consola de entrada/salida
+     * @param random  generador aleatorio del número secreto
+     */
     public JuegoMayorMenor(Consola consola, Random random) {
         this.consola = Objects.requireNonNull(consola, "La consola no puede ser null.");
         this.random = Objects.requireNonNull(random, "El generador aleatorio no puede ser null.");
@@ -56,6 +65,10 @@ public class JuegoMayorMenor implements Juego {
     /**
      * Compara un número ingresado contra el número secreto.
      * Método visible para poder probar la regla de negocio de forma aislada.
+     *
+     * @param numeroSecreto número que debe adivinar el usuario
+     * @param numero        número ingresado por el usuario
+     * @return la pista correspondiente (mayor, menor o acierto)
      */
     public Pista evaluarIntento(int numeroSecreto, int numero) {
         if (numero == numeroSecreto) {
@@ -64,6 +77,7 @@ public class JuegoMayorMenor implements Juego {
         return numero < numeroSecreto ? Pista.MAYOR : Pista.MENOR;
     }
 
+    /** Genera el número secreto aleatorio dentro del rango permitido. */
     private int generarNumeroSecreto() {
         return random.nextInt(RANGO_MAXIMO - RANGO_MINIMO + 1) + RANGO_MINIMO;
     }
