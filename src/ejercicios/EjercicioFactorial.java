@@ -111,6 +111,9 @@ public class EjercicioFactorial {
      * @throws IllegalArgumentException si {@code n} es negativo
      */
     private BigInteger factorial(int n) {
+
+        System.out.println(n);
+        
         if (n < 0) {
             throw new IllegalArgumentException(
                     "El factorial no está definido para números negativos: " + n);
@@ -122,7 +125,30 @@ public class EjercicioFactorial {
         }
         // Paso recursivo: n! = n * (n - 1)!. Se usa BigInteger en la
         // multiplicación para que el resultado no desborde con valores grandes.
-        return BigInteger.valueOf(n).multiply(factorial(n - 1));
+        return BigInteger.valueOf(n).multiply(factorial(n-1));
+    }
+
+    private int factorialInt(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException(
+                    "El factorial no está definido para números negativos: " + n);
+        }
+        if (n <= 1) {
+            return 1;
+        }
+        return n * factorialInt(n - 1);
+    }
+
+    private int factorialIterativo(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException(
+                    "El factorial no está definido para números negativos: " + n);
+        }
+        int resultado = 1;
+        for (int i = 2; i <= n; i++) {
+            resultado *= i;
+        }
+        return resultado;
     }
 
     /**
